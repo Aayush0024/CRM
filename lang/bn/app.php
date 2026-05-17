@@ -1,0 +1,20 @@
+<?php
+return [
+    'nav' => ['dashboard'=>'ড্যাশবোর্ড','customers'=>'গ্রাহকরা','contacts'=>'যোগাযোগ','leads'=>'লিড','deals'=>'চুক্তি','tasks'=>'কাজ','reports'=>'রিপোর্ট','settings'=>'সেটিংস','users'=>'ব্যবহারকারী','activities'=>'কার্যক্রম','notifications'=>'বিজ্ঞপ্তি','logout'=>'লগ আউট','profile'=>'প্রোফাইল'],
+    'dashboard' => ['title'=>'ড্যাশবোর্ড','welcome'=>'আবার স্বাগতম','total_customers'=>'মোট গ্রাহক','total_leads'=>'মোট লিড','open_deals'=>'খোলা চুক্তি','deal_value'=>'পাইপলাইন মূল্য','won_deals'=>'জেতা চুক্তি','pending_tasks'=>'মুলতুবি কাজ','overdue_tasks'=>'মেয়াদোত্তীর্ণ কাজ','new_leads'=>'এই মাসে নতুন লিড','recent_activities'=>'সাম্প্রতিক কার্যক্রম','my_tasks'=>'আমার কাজ','recent_customers'=>'সাম্প্রতিক গ্রাহক','deals_by_stage'=>'পর্যায় অনুযায়ী চুক্তি','leads_by_status'=>'অবস্থা অনুযায়ী লিড'],
+    'customers' => ['title'=>'গ্রাহকরা','add'=>'গ্রাহক যোগ করুন','edit'=>'সম্পাদনা','view'=>'দেখুন','name'=>'নাম','company'=>'কোম্পানি','email'=>'ইমেইল','phone'=>'ফোন','status'=>'অবস্থা','language'=>'পছন্দের ভাষা','assigned_to'=>'নিযুক্ত'],
+    'leads' => ['title'=>'লিড','add'=>'লিড যোগ করুন','edit'=>'লিড সম্পাদনা করুন','view'=>'লিড দেখুন','title_field'=>'লিড শিরোনাম','name'=>'নাম','email'=>'ইমেইল','phone'=>'ফোন','company'=>'কোম্পানি','status'=>'অবস্থা','priority'=>'অগ্রাধিকার','source'=>'উৎস','value'=>'আনুমানিক মূল্য','currency'=>'মুদ্রা','description'=>'বর্ণনা','assigned_to'=>'নিযুক্ত','close_date'=>'প্রত্যাশিত সমাপন তারিখ','convert'=>'চুক্তিতে রূপান্তর','customer_optional'=>'গ্রাহক (ঐচ্ছিক)'],
+    'deals' => ['title'=>'চুক্তি','add'=>'চুক্তি যোগ করুন','stage'=>'পর্যায়','value'=>'মূল্য','kanban'=>'কানবান দৃশ্য','list'=>'তালিকা দৃশ্য'],
+    'tasks' => ['title'=>'কাজ','add'=>'কাজ যোগ করুন','title_field'=>'কাজের শিরোনাম','status'=>'অবস্থা','priority'=>'অগ্রাধিকার','due_date'=>'নির্ধারিত তারিখ','complete'=>'সম্পন্ন'],
+    'status' => ['active'=>'সক্রিয়','inactive'=>'নিষ্ক্রিয়','new'=>'নতুন','contacted'=>'যোগাযোগ করা হয়েছে','qualified'=>'যোগ্য','converted'=>'রূপান্তরিত','pending'=>'মুলতুবি','completed'=>'সম্পন্ন','won'=>'জেতা','lost'=>'হারানো'],
+    'stages' => ['prospecting'=>'সম্ভাবনা','qualification'=>'যোগ্যতা','proposal'=>'প্রস্তাব','negotiation'=>'আলোচনা','closed_won'=>'বন্ধ - জেতা','closed_lost'=>'বন্ধ - হারানো'],
+    'priority' => ['low'=>'কম','medium'=>'মাঝারি','high'=>'উচ্চ','urgent'=>'জরুরি'],
+    'task_types' => ['call'=>'কল','email'=>'ইমেইল','meeting'=>'মিটিং','follow_up'=>'ফলো আপ','demo'=>'ডেমো','other'=>'অন্যান্য'],
+    'buttons' => ['save'=>'সংরক্ষণ','cancel'=>'বাতিল','edit'=>'সম্পাদনা','delete'=>'মুছুন','view'=>'দেখুন','add'=>'যোগ করুন','update'=>'আপডেট','search'=>'খুঁজুন','filter'=>'ফিল্টার','reset'=>'রিসেট','back'=>'পিছনে','submit'=>'জমা দিন','login'=>'লগইন','logout'=>'লগ আউট'],
+    'reports' => ['title'=>'রিপোর্ট','total_revenue'=>'মোট রাজস্ব','win_rate'=>'জয়ের হার','avg_deal_value'=>'গড় চুক্তির মূল্য','conversion_rate'=>'রূপান্তর হার'],
+    'settings' => ['title'=>'সেটিংস','company'=>'কোম্পানি সেটিংস','language'=>'ভাষা সেটিংস','user_language'=>'আমার ভাষা পছন্দ'],
+    'auth' => ['login'=>'লগইন','register'=>'নিবন্ধন','email'=>'ইমেইল','password'=>'পাসওয়ার্ড','remember_me'=>'আমাকে মনে রাখুন','name'=>'পুরো নাম'],
+    'users' => ['title'=>'ব্যবহারকারী','add'=>'ব্যবহারকারী যোগ করুন','name'=>'নাম','email'=>'ইমেইল','role'=>'ভূমিকা','language'=>'ভাষা','status'=>'অবস্থা','active'=>'সক্রিয়','inactive'=>'নিষ্ক্রিয়','password'=>'পাসওয়ার্ড','confirm_password'=>'পাসওয়ার্ড নিশ্চিত করুন','new_password'=>'নতুন পাসওয়ার্ড','leave_blank'=>'খালি রাখুন'],
+    'contacts' => ['title'=>'পরিচিতি','add'=>'পরিচিতি যোগ করুন','edit'=>'পরিচিতি সম্পাদনা করুন','view'=>'পরিচিতি দেখুন','first_name'=>'প্রথম নাম','last_name'=>'শেষ নাম','job_title'=>'চাকরির শিরোনাম','position'=>'পদ'],
+    'general' => ['yes'=>'হ্যাঁ','no'=>'না','all'=>'সব','select'=>'নির্বাচন করুন','no_data'=>'কোনো ডেটা নেই','actions'=>'ক্রিয়া','confirm_delete'=>'মুছতে চান?','search_placeholder'=>'খুঁজুন...','customer'=>'গ্রাহক','crm_tagline'=>'গ্রাহক সম্পর্ক ব্যবস্থাপনা','overdue'=>'সমযসীমা অতিক্রান্ত'],
+];

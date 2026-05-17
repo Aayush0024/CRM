@@ -1,0 +1,20 @@
+<?php
+return [
+    'nav' => ['dashboard'=>'డాష్‌బోర్డ్','customers'=>'కస్టమర్లు','contacts'=>'పరిచయాలు','leads'=>'లీడ్స్','deals'=>'డీల్స్','tasks'=>'పనులు','reports'=>'నివేదికలు','settings'=>'సెట్టింగులు','users'=>'వినియోగదారులు','activities'=>'కార్యకలాపాలు','notifications'=>'నోటిఫికేషన్లు','logout'=>'లాగ్ అవుట్','profile'=>'ప్రొఫైల్'],
+    'dashboard' => ['title'=>'డాష్‌బోర్డ్','welcome'=>'తిరిగి స్వాగతం','total_customers'=>'మొత్తం కస్టమర్లు','total_leads'=>'మొత్తం లీడ్స్','open_deals'=>'తెరిచిన డీల్స్','deal_value'=>'పైప్‌లైన్ విలువ','won_deals'=>'గెలిచిన డీల్స్','pending_tasks'=>'పెండింగ్ పనులు','overdue_tasks'=>'గడువు మించిన పనులు','new_leads'=>'ఈ నెల కొత్త లీడ్స్','recent_activities'=>'ఇటీవలి కార్యకలాపాలు','my_tasks'=>'నా పనులు','recent_customers'=>'ఇటీవలి కస్టమర్లు','deals_by_stage'=>'దశ వారీగా డీల్స్','leads_by_status'=>'స్థితి వారీగా లీడ్స్'],
+    'customers' => ['title'=>'కస్టమర్లు','add'=>'కస్టమర్ జోడించు','edit'=>'సవరించు','view'=>'చూడు','name'=>'పేరు','company'=>'కంపెనీ','email'=>'ఇమెయిల్','phone'=>'ఫోన్','status'=>'స్థితి','language'=>'ఇష్టమైన భాష','assigned_to'=>'కేటాయించబడింది'],
+    'leads' => ['title'=>'లీడ్స్','add'=>'లీడ్ జోడించు','edit'=>'లీడ్ సవరించు','view'=>'లీడ్ చూడు','title_field'=>'లీడ్ శీర్షిక','name'=>'పేరు','email'=>'ఇమెయిల్','phone'=>'ఫోన్','company'=>'కంపెనీ','status'=>'స్థితి','priority'=>'ప్రాధాన్యత','source'=>'మూలం','value'=>'అంచనా విలువ','currency'=>'కరెన్సీ','description'=>'వివరణ','assigned_to'=>'కేటాయించబడింది','close_date'=>'అంచనా ముగింపు తేదీ','convert'=>'డీల్‌గా మార్చు','customer_optional'=>'కస్టమర్ (ఐచ్ఛిక)'],
+    'deals' => ['title'=>'డీల్స్','add'=>'డీల్ జోడించు','stage'=>'దశ','value'=>'విలువ','kanban'=>'కాన్బాన్ వీక్షణ','list'=>'జాబితా వీక్షణ'],
+    'tasks' => ['title'=>'పనులు','add'=>'పని జోడించు','title_field'=>'పని శీర్షిక','status'=>'స్థితి','priority'=>'ప్రాధాన్యత','due_date'=>'గడువు తేదీ','complete'=>'పూర్తయింది'],
+    'status' => ['active'=>'చురుకైన','inactive'=>'నిష్క్రియ','new'=>'కొత్త','contacted'=>'సంప్రదించారు','qualified'=>'అర్హత','converted'=>'మార్చబడింది','pending'=>'పెండింగ్','completed'=>'పూర్తయింది','won'=>'గెలిచారు','lost'=>'ఓడిపోయారు'],
+    'stages' => ['prospecting'=>'అన్వేషణ','qualification'=>'అర్హత','proposal'=>'ప్రతిపాదన','negotiation'=>'చర్చలు','closed_won'=>'మూసివేయబడింది - గెలిచారు','closed_lost'=>'మూసివేయబడింది - ఓడిపోయారు'],
+    'priority' => ['low'=>'తక్కువ','medium'=>'మధ్యస్థ','high'=>'అధిక','urgent'=>'అత్యవసర'],
+    'task_types' => ['call'=>'కాల్','email'=>'ఇమెయిల్','meeting'=>'సమావేశం','follow_up'=>'ఫాలో అప్','demo'=>'డెమో','other'=>'ఇతర'],
+    'buttons' => ['save'=>'సేవ్','cancel'=>'రద్దు','edit'=>'సవరించు','delete'=>'తొలగించు','view'=>'చూడు','add'=>'జోడించు','update'=>'నవీకరించు','search'=>'వెతుకు','filter'=>'ఫిల్టర్','reset'=>'రీసెట్','back'=>'వెనుకకు','submit'=>'సమర్పించు','login'=>'లాగిన్','logout'=>'లాగ్ అవుట్'],
+    'reports' => ['title'=>'నివేదికలు','total_revenue'=>'మొత్తం ఆదాయం','win_rate'=>'విజయ రేటు','avg_deal_value'=>'సగటు డీల్ విలువ','conversion_rate'=>'మార్పిడి రేటు'],
+    'settings' => ['title'=>'సెట్టింగులు','company'=>'కంపెనీ సెట్టింగులు','language'=>'భాష సెట్టింగులు','user_language'=>'నా భాష ప్రాధాన్యత'],
+    'auth' => ['login'=>'లాగిన్','register'=>'నమోదు','email'=>'ఇమెయిల్','password'=>'పాస్‌వర్డ్','remember_me'=>'నన్ను గుర్తుంచుకో','name'=>'పూర్తి పేరు'],
+    'users' => ['title'=>'వినియోగదారులు','add'=>'వినియోగదారు జోడించు','name'=>'పేరు','email'=>'ఇమెయిల్','role'=>'పాత్ర','language'=>'భాష','status'=>'స్థితి','active'=>'చురుకైన','inactive'=>'నిష్క్రియ','password'=>'పాస్‌వర్డ్','confirm_password'=>'పాస్‌వర్డ్ నిర్ధారించండి','new_password'=>'కొత్త పాస్‌వర్డ్','leave_blank'=>'ఖాలీ వదిలివేయండి'],
+    'contacts' => ['title'=>'పరిచయాలు','add'=>'పరిచయం జోడించు','edit'=>'పరిచయం సవరించు','view'=>'పరిచయం చూడు','first_name'=>'మొదటి పేరు','last_name'=>'చివరి పేరు','job_title'=>'ఉద్యోగ శీర్షిక','position'=>'స్థానం'],
+    'general' => ['yes'=>'అవును','no'=>'కాదు','all'=>'అన్నీ','select'=>'ఎంచుకోండి','no_data'=>'డేటా లేదు','actions'=>'చర్యలు','confirm_delete'=>'తొలగించాలా?','search_placeholder'=>'వెతుకు...','customer'=>'కస్టమర్','crm_tagline'=>'కస్టమర్ సంబంధాల నిర్వహణ','overdue'=>'గడువు దాటింది'],
+];

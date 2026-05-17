@@ -1,0 +1,20 @@
+<?php
+return [
+    'nav' => ['dashboard'=>'ಡ್ಯಾಶ್‌ಬೋರ್ಡ್','customers'=>'ಗ್ರಾಹಕರು','contacts'=>'ಸಂಪರ್ಕಗಳು','leads'=>'ಲೀಡ್‌ಗಳು','deals'=>'ಒಪ್ಪಂದಗಳು','tasks'=>'ಕಾರ್ಯಗಳು','reports'=>'ವರದಿಗಳು','settings'=>'ಸೆಟ್ಟಿಂಗ್‌ಗಳು','users'=>'ಬಳಕೆದಾರರು','activities'=>'ಚಟುವಟಿಕೆಗಳು','notifications'=>'ಅಧಿಸೂಚನೆಗಳು','logout'=>'ಲಾಗ್ ಔಟ್','profile'=>'ಪ್ರೊಫೈಲ್'],
+    'dashboard' => ['title'=>'ಡ್ಯಾಶ್‌ಬೋರ್ಡ್','welcome'=>'ಮತ್ತೆ ಸ್ವಾಗತ','total_customers'=>'ಒಟ್ಟು ಗ್ರಾಹಕರು','total_leads'=>'ಒಟ್ಟು ಲೀಡ್‌ಗಳು','open_deals'=>'ತೆರೆದ ಒಪ್ಪಂದಗಳು','deal_value'=>'ಪೈಪ್‌ಲೈನ್ ಮೌಲ್ಯ','won_deals'=>'ಗೆದ್ದ ಒಪ್ಪಂದಗಳು','pending_tasks'=>'ಬಾಕಿ ಕಾರ್ಯಗಳು','overdue_tasks'=>'ವಿಳಂಬ ಕಾರ್ಯಗಳು','new_leads'=>'ಈ ತಿಂಗಳ ಹೊಸ ಲೀಡ್‌ಗಳು','recent_activities'=>'ಇತ್ತೀಚಿನ ಚಟುವಟಿಕೆಗಳು','my_tasks'=>'ನನ್ನ ಕಾರ್ಯಗಳು','recent_customers'=>'ಇತ್ತೀಚಿನ ಗ್ರಾಹಕರು','deals_by_stage'=>'ಹಂತದ ಪ್ರಕಾರ ಒಪ್ಪಂದಗಳು','leads_by_status'=>'ಸ್ಥಿತಿ ಪ್ರಕಾರ ಲೀಡ್‌ಗಳು'],
+    'customers' => ['title'=>'ಗ್ರಾಹಕರು','add'=>'ಗ್ರಾಹಕ ಸೇರಿಸಿ','edit'=>'ಸಂಪಾದಿಸಿ','view'=>'ನೋಡಿ','name'=>'ಹೆಸರು','company'=>'ಕಂಪನಿ','email'=>'ಇಮೇಲ್','phone'=>'ಫೋನ್','status'=>'ಸ್ಥಿತಿ','language'=>'ಆದ್ಯತೆಯ ಭಾಷೆ','assigned_to'=>'ನಿಯೋಜಿಸಲಾಗಿದೆ'],
+    'leads' => ['title'=>'ಲೀಡ್‌ಗಳು','add'=>'ಲೀಡ್ ಸೇರಿಸಿ','edit'=>'ಲೀಡ್ ಸಂಪಾದಿಸಿ','view'=>'ಲೀಡ್ ನೋಡಿ','title_field'=>'ಲೀಡ್ ಶೀರ್ಷಿಕೆ','name'=>'ಹೆಸರು','email'=>'ಇಮೇಲ್','phone'=>'ಫೋನ್','company'=>'ಕಂಪನಿ','status'=>'ಸ್ಥಿತಿ','priority'=>'ಆದ್ಯತೆ','source'=>'ಮೂಲ','value'=>'ಅಂದಾಜು ಮೌಲ್ಯ','currency'=>'ಕರೆನ್ಸಿ','description'=>'ವಿವರಣೆ','assigned_to'=>'ನಿಯೋಜಿಸಲಾಗಿದೆ','close_date'=>'ನಿರೀಕ್ಷಿತ ಮುಕ್ತಾಯ ದಿನಾಂಕ','convert'=>'ಒಪ್ಪಂದಕ್ಕೆ ಪರಿವರ್ತಿಸಿ','customer_optional'=>'ಗ್ರಾಹಕ (ಐಚ್ಛಿಕ)'],
+    'deals' => ['title'=>'ಒಪ್ಪಂದಗಳು','add'=>'ಒಪ್ಪಂದ ಸೇರಿಸಿ','stage'=>'ಹಂತ','value'=>'ಮೌಲ್ಯ','kanban'=>'ಕಾನ್ಬಾನ್ ನೋಟ','list'=>'ಪಟ್ಟಿ ನೋಟ'],
+    'tasks' => ['title'=>'ಕಾರ್ಯಗಳು','add'=>'ಕಾರ್ಯ ಸೇರಿಸಿ','title_field'=>'ಕಾರ್ಯ ಶೀರ್ಷಿಕೆ','status'=>'ಸ್ಥಿತಿ','priority'=>'ಆದ್ಯತೆ','due_date'=>'ಗಡುವು ದಿನಾಂಕ','complete'=>'ಪೂರ್ಣ ಎಂದು ಗುರುತಿಸಿ'],
+    'status' => ['active'=>'ಸಕ್ರಿಯ','inactive'=>'ನಿಷ್ಕ್ರಿಯ','new'=>'ಹೊಸ','contacted'=>'ಸಂಪರ್ಕಿಸಲಾಗಿದೆ','qualified'=>'ಅರ್ಹ','converted'=>'ಪರಿವರ್ತಿಸಲಾಗಿದೆ','pending'=>'ಬಾಕಿ','completed'=>'ಪೂರ್ಣ','won'=>'ಗೆದ್ದಿದೆ','lost'=>'ಸೋತಿದೆ'],
+    'stages' => ['prospecting'=>'ಹುಡುಕಾಟ','qualification'=>'ಅರ್ಹತೆ','proposal'=>'ಪ್ರಸ್ತಾವನೆ','negotiation'=>'ಮಾತುಕತೆ','closed_won'=>'ಮುಚ್ಚಲಾಗಿದೆ - ಗೆದ್ದಿದೆ','closed_lost'=>'ಮುಚ್ಚಲಾಗಿದೆ - ಸೋತಿದೆ'],
+    'priority' => ['low'=>'ಕಡಿಮೆ','medium'=>'ಮಧ್ಯಮ','high'=>'ಹೆಚ್ಚು','urgent'=>'ತುರ್ತು'],
+    'task_types' => ['call'=>'ಕರೆ','email'=>'ಇಮೇಲ್','meeting'=>'ಸಭೆ','follow_up'=>'ಫಾಲೋ ಅಪ್','demo'=>'ಡೆಮೋ','other'=>'ಇತರ'],
+    'buttons' => ['save'=>'ಉಳಿಸಿ','cancel'=>'ರದ್ದು','edit'=>'ಸಂಪಾದಿಸಿ','delete'=>'ಅಳಿಸಿ','view'=>'ನೋಡಿ','add'=>'ಸೇರಿಸಿ','update'=>'ನವೀಕರಿಸಿ','search'=>'ಹುಡುಕಿ','filter'=>'ಫಿಲ್ಟರ್','reset'=>'ರೀಸೆಟ್','back'=>'ಹಿಂದೆ','submit'=>'ಸಲ್ಲಿಸಿ','login'=>'ಲಾಗಿನ್','logout'=>'ಲಾಗ್ ಔಟ್'],
+    'reports' => ['title'=>'ವರದಿಗಳು','total_revenue'=>'ಒಟ್ಟು ಆದಾಯ','win_rate'=>'ಗೆಲುವಿನ ದರ','avg_deal_value'=>'ಸರಾಸರಿ ಒಪ್ಪಂದ ಮೌಲ್ಯ','conversion_rate'=>'ಪರಿವರ್ತನೆ ದರ'],
+    'settings' => ['title'=>'ಸೆಟ್ಟಿಂಗ್‌ಗಳು','company'=>'ಕಂಪನಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು','language'=>'ಭಾಷಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳು','user_language'=>'ನನ್ನ ಭಾಷಾ ಆದ್ಯತೆ'],
+    'auth' => ['login'=>'ಲಾಗಿನ್','register'=>'ನೋಂದಣಿ','email'=>'ಇಮೇಲ್','password'=>'ಪಾಸ್‌ವರ್ಡ್','remember_me'=>'ನನ್ನನ್ನು ನೆನಪಿಡಿ','name'=>'ಪೂರ್ಣ ಹೆಸರು'],
+    'users' => ['title'=>'ಬಳಕೆದಾರರು','add'=>'ಬಳಕೆದಾರ ಸೇರಿಸಿ','name'=>'ಹೆಸರು','email'=>'ಇಮೇಲ್','role'=>'ಪಾತ್ರ','language'=>'ಭಾಷೆ','status'=>'ಸ್ಥಿತಿ','active'=>'ಸಕ್ರಿಯ','inactive'=>'ನಿಷ್ಕ್ರಿಯ','password'=>'ಪಾಸ್‌ವರ್ಡ್','confirm_password'=>'ಪಾಸ್‌ವರ್ಡ್ ದೃಢೀಕರಿಸಿ','new_password'=>'ಹೊಸ ಪಾಸ್‌ವರ್ಡ್','leave_blank'=>'ಖಾಲಿ ಬಿಡಿ'],
+    'contacts' => ['title'=>'ಸಂಪರ್ಕಗಳು','add'=>'ಸಂಪರ್ಕ ಸೇರಿಸಿ','edit'=>'ಸಂಪರ್ಕ ಸಂಪಾದಿಸಿ','view'=>'ಸಂಪರ್ಕ ನೋಡಿ','first_name'=>'ಮೊದಲ ಹೆಸರು','last_name'=>'ಕೊನೆಯ ಹೆಸರು','job_title'=>'ಉದ್ಯೋಗ ಶೀರ್ಷಿಕೆ','position'=>'ಸ್ಥಾನ'],
+    'general' => ['yes'=>'ಹೌದು','no'=>'ಇಲ್ಲ','all'=>'ಎಲ್ಲಾ','select'=>'ಆಯ್ಕೆ ಮಾಡಿ','no_data'=>'ಡೇಟಾ ಇಲ್ಲ','actions'=>'ಕ್ರಿಯೆಗಳು','confirm_delete'=>'ಅಳಿಸಬೇಕೇ?','search_placeholder'=>'ಹುಡುಕಿ...','customer'=>'ಗ್ರಾಹಕ','crm_tagline'=>'ಗ್ರಾಹಕ ಸಂಬಂಧ ನಿರ್ವಹಣೆ','overdue'=>'ಗಡುವು ಮೀರಿದೆ'],
+];

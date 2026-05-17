@@ -1,0 +1,20 @@
+<?php
+return [
+    'nav' => ['dashboard'=>'डॅशबोर्ड','customers'=>'ग्राहक','contacts'=>'संपर्क','leads'=>'लीड','deals'=>'व्यवहार','tasks'=>'कार्ये','reports'=>'अहवाल','settings'=>'सेटिंग्ज','users'=>'वापरकर्ते','activities'=>'क्रियाकलाप','notifications'=>'सूचना','logout'=>'लॉग आउट','profile'=>'प्रोफाइल'],
+    'dashboard' => ['title'=>'डॅशबोर्ड','welcome'=>'पुन्हा स्वागत आहे','total_customers'=>'एकूण ग्राहक','total_leads'=>'एकूण लीड','open_deals'=>'उघडे व्यवहार','deal_value'=>'पाइपलाइन मूल्य','won_deals'=>'जिंकलेले व्यवहार','pending_tasks'=>'प्रलंबित कार्ये','overdue_tasks'=>'मुदत संपलेली कार्ये','new_leads'=>'या महिन्यातील नवीन लीड','recent_activities'=>'अलीकडील क्रियाकलाप','my_tasks'=>'माझी कार्ये','recent_customers'=>'अलीकडील ग्राहक','deals_by_stage'=>'टप्प्यानुसार व्यवहार','leads_by_status'=>'स्थितीनुसार लीड'],
+    'customers' => ['title'=>'ग्राहक','add'=>'ग्राहक जोडा','edit'=>'संपादित करा','view'=>'पहा','name'=>'नाव','company'=>'कंपनी','email'=>'ईमेल','phone'=>'फोन','status'=>'स्थिती','language'=>'पसंतीची भाषा','assigned_to'=>'नियुक्त केलेले'],
+    'leads' => ['title'=>'लीड','add'=>'लीड जोडा','edit'=>'लीड संपादित करा','view'=>'लीड पहा','title_field'=>'लीड शीर्षक','name'=>'नाव','email'=>'ईमेल','phone'=>'फोन','company'=>'कंपनी','status'=>'स्थिती','priority'=>'प्राधान्य','source'=>'स्रोत','value'=>'अंदाजित मूल्य','currency'=>'चलन','description'=>'वर्णन','assigned_to'=>'नियुक्त केलेले','close_date'=>'अपेक्षित समापन तारीख','convert'=>'व्यवहारात रूपांतरित करा','customer_optional'=>'ग्राहक (ऐच्छिक)'],
+    'deals' => ['title'=>'व्यवहार','add'=>'व्यवहार जोडा','stage'=>'टप्पा','value'=>'मूल्य','kanban'=>'कानबान दृश्य','list'=>'यादी दृश्य'],
+    'tasks' => ['title'=>'कार्ये','add'=>'कार्य जोडा','title_field'=>'कार्य शीर्षक','status'=>'स्थिती','priority'=>'प्राधान्य','due_date'=>'देय तारीख','complete'=>'पूर्ण म्हणून चिन्हांकित करा'],
+    'status' => ['active'=>'सक्रिय','inactive'=>'निष्क्रिय','new'=>'नवीन','contacted'=>'संपर्क केला','qualified'=>'पात्र','converted'=>'रूपांतरित','pending'=>'प्रलंबित','completed'=>'पूर्ण','won'=>'जिंकले','lost'=>'हरले'],
+    'stages' => ['prospecting'=>'शोध','qualification'=>'पात्रता','proposal'=>'प्रस्ताव','negotiation'=>'वाटाघाटी','closed_won'=>'बंद - जिंकले','closed_lost'=>'बंद - हरले'],
+    'priority' => ['low'=>'कमी','medium'=>'मध्यम','high'=>'उच्च','urgent'=>'तातडीचे'],
+    'task_types' => ['call'=>'कॉल','email'=>'ईमेल','meeting'=>'बैठक','follow_up'=>'पाठपुरावा','demo'=>'डेमो','other'=>'इतर'],
+    'buttons' => ['save'=>'जतन करा','cancel'=>'रद्द करा','edit'=>'संपादित करा','delete'=>'हटवा','view'=>'पहा','add'=>'जोडा','update'=>'अद्यतनित करा','search'=>'शोधा','filter'=>'फिल्टर','reset'=>'रीसेट','back'=>'मागे','submit'=>'सबमिट करा','login'=>'लॉग इन','logout'=>'लॉग आउट'],
+    'reports' => ['title'=>'अहवाल','total_revenue'=>'एकूण महसूल','win_rate'=>'जिंकण्याचा दर','avg_deal_value'=>'सरासरी व्यवहार मूल्य','conversion_rate'=>'रूपांतरण दर'],
+    'settings' => ['title'=>'सेटिंग्ज','company'=>'कंपनी सेटिंग्ज','language'=>'भाषा सेटिंग्ज','user_language'=>'माझी भाषा प्राधान्य'],
+    'auth' => ['login'=>'लॉग इन','register'=>'नोंदणी','email'=>'ईमेल','password'=>'पासवर्ड','remember_me'=>'मला लक्षात ठेवा','name'=>'पूर्ण नाव'],
+    'users' => ['title'=>'वापरकर्ते','add'=>'वापरकर्ता जोडा','name'=>'नाव','email'=>'ईमेल','role'=>'भूमिका','language'=>'भाषा','status'=>'स्थिती','active'=>'सक्रिय','inactive'=>'निष्क्रिय','password'=>'पासवर्ड','confirm_password'=>'पासवर्ड निश्चित करा','new_password'=>'नवीन पासवर्ड','leave_blank'=>'रिक्त सोडा'],
+    'contacts' => ['title'=>'संपर्क','add'=>'संपर्क जोडा','edit'=>'संपर्क संपादित करा','view'=>'संपर्क पहा','first_name'=>'पहिले नाव','last_name'=>'आडनाव','job_title'=>'नोकरी शीर्षक','position'=>'पद'],
+    'general' => ['yes'=>'होय','no'=>'नाही','all'=>'सर्व','select'=>'निवडा','no_data'=>'डेटा नाही','actions'=>'क्रिया','confirm_delete'=>'हटवायचे आहे का?','search_placeholder'=>'शोधा...','customer'=>'ग्राहक','crm_tagline'=>'ग्राहक संबंध व्यवस्थापन','overdue'=>'अंतिम मुदतीपेक्षा जास्त'],
+];
