@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ config('languages.supported.'.app()->getLocale().'.direction', 'ltr') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Regional CRM') }} - @yield('title', __('app.nav.dashboard'))</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Bengali', sans-serif; }
+        .sidebar-link.active { background: rgba(99,102,241,0.15); color: #6366f1; border-right: 3px solid #6366f1; }
+        .sidebar-link:hover { background: rgba(99,102,241,0.08); }
+        [dir="rtl"] .sidebar-link.active { border-right: none; border-left: 3px solid #6366f1; }
+        .badge-green { background:#dcfce7;color:#166534; }
+        .badge-red { background:#fee2e2;color:#991b1b; }
+        .badge-blue { background:#dbeafe;color:#1e40af; }
+        .badge-yellow { background:#fef9c3;color:#854d0e; }
+        .badge-purple { background:#f3e8ff;color:#6b21a8; }
+        .badge-gray { background:#f3f4f6;color:#374151; }
+        .badge-orange { background:#ffedd5;color:#9a3412; }
+        .badge-indigo { background:#e0e7ff;color:#3730a3; }
+        .kanban-col { min-height: 400px; }
+        .drag-over { background: #e0e7ff; border: 2px dashed #6366f1; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+        .fade-in { animation: fadeIn 0.2s ease; }
+        .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+        .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+        .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+        /* Let the main column shrink inside h-screen flex so overflow-y-auto can scroll */
+        .app-main-scroll { min-height: 0; }
+    </style>
+    @stack('styles')
+</head>
+<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+
+<div class="flex h-screen min-h-0 overflow-hidden">
+    {{-- Sidebar --}}
+    <aside id="sidebar" class="w-64 bg-white shadow-lg flex flex-col fixed inset-y-0 left-0 z-30 transform -translate-x-full md:translate-x-0 transition-transform duration-200">
+        {{-- Logo --}}
+        <div class="flex items-center gap-3 px-6 py-5 border-b border-gray-100">
+            <div class="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center">
+                <i class="fas fa-handshake text-white text-sm"></i>
+            </div>
+            <div>
+                <div class="font-bold text-gray-900 text-sm leading-tight">{{ config('app.name','Regional CRM') }}</div>
+                <div class="text-xs text-gray-400">{{ config('languages.supported.'.app()->getLocale().'.native', 'English') }}</div>
+            </div>
+        </div>
+
+        {{-- Nav --}}
+        <nav class="flex-1 overflow-y-auto scrollbar-thin py-4 px-3">
+            <a href="{{ route('dashboard') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <i class="fas fa-th-large w-5 text-center"></i> {{ __('app.nav.dashboard') }}
+            </a>
+
+            {{-- Customers: all roles (support agents can view to handle issues) --}}
+            <a href="{{ route('customers.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('customers.*') ? 'active' : '' }}">
+                <i class="fas fa-users w-5 text-center"></i> {{ __('app.nav.customers') }}
+            </a>
+
+            {{-- Contacts: all roles --}}
+            <a href="{{ route('contacts.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('contacts.*') ? 'active' : '' }}">
+                <i class="fas fa-address-book w-5 text-center"></i> {{ __('app.nav.contacts') }}
+            </a>
+
+            {{-- Leads: sales roles only (not support agents) --}}
+            @if(auth()->user()->isAdmin() || auth()->user()->isManager() || auth()->user()->isSalesExecutive())
+            <a href="{{ route('leads.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('leads.*') ? 'active' : '' }}">
+                <i class="fas fa-funnel-dollar w-5 text-center"></i> {{ __('app.nav.leads') }}
+            </a>
+            <a href="{{ route('deals.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('deals.*') ? 'active' : '' }}">
+                <i class="fas fa-briefcase w-5 text-center"></i> {{ __('app.nav.deals') }}
+            </a>
+            @endif
+
+            {{-- Tasks: all roles --}}
+            <a href="{{ route('tasks.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('tasks.*') ? 'active' : '' }}">
+                <i class="fas fa-tasks w-5 text-center"></i> {{ __('app.nav.tasks') }}
+            </a>
+
+            {{-- Activities: all roles --}}
+            <a href="{{ route('activities.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('activities.*') ? 'active' : '' }}">
+                <i class="fas fa-history w-5 text-center"></i> {{ __('app.nav.activities') }}
+            </a>
+
+            {{-- Reports: admin + manager only --}}
+            @if(auth()->user()->canViewReports())
+            <a href="{{ route('reports.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('reports.*') ? 'active' : '' }}">
+                <i class="fas fa-chart-bar w-5 text-center"></i> {{ __('app.nav.reports') }}
+            </a>
+            @endif
+
+            {{-- Admin section --}}
+            @if(auth()->user()->isAdmin())
+            <div class="mt-4 mb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Admin</div>
+            <a href="{{ route('users.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                <i class="fas fa-user-cog w-5 text-center"></i> {{ __('app.nav.users') }}
+            </a>
+            <a href="{{ route('settings.index') }}" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 mb-1 {{ request()->routeIs('settings.*') ? 'active' : '' }}">
+                <i class="fas fa-cog w-5 text-center"></i> {{ __('app.nav.settings') }}
+            </a>
+            @endif
+        </nav>
+
+        {{-- User info --}}
+        <div class="border-t border-gray-100 p-4">
+            <div class="flex items-center gap-3">
+                <img src="{{ auth()->user()->avatar_url }}" class="w-8 h-8 rounded-full object-cover" alt="">
+                <div class="flex-1 min-w-0">
+                    <div class="text-sm font-medium text-gray-900 truncate">{{ auth()->user()->name }}</div>
+                    <div class="text-xs text-gray-400 truncate">{{ auth()->user()->role->display_name ?? 'User' }}</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    {{-- Main content (min-h-0 required so flex child can scroll instead of clipping) --}}
+    <div class="flex-1 flex flex-col min-h-0 w-full min-w-0 md:ml-64">
+        {{-- Top navbar --}}
+        <header class="shrink-0 bg-white shadow-sm z-20 px-4 md:px-6 py-3 flex items-center justify-between border-b border-gray-100">
+            <div class="flex items-center gap-3">
+                <button id="sidebarToggle" class="md:hidden text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+                <h1 class="text-lg font-semibold text-gray-800">@yield('title', __('app.nav.dashboard'))</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                {{-- Language Switcher --}}
+                <div class="relative" x-data="{ open: false }">
+                    <button onclick="document.getElementById('langMenu').classList.toggle('hidden')" class="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition">
+                        <span>{{ config('languages.supported.'.app()->getLocale().'.flag','🌐') }}</span>
+                        <span class="hidden sm:inline">{{ config('languages.supported.'.app()->getLocale().'.native','English') }}</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="langMenu" class="hidden absolute right-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50 fade-in">
+                        @foreach(config('languages.supported') as $code => $lang)
+                        <a href="{{ route('lang.switch', $code) }}" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 {{ app()->getLocale() === $code ? 'bg-indigo-50 text-indigo-600 font-medium' : '' }}">
+                            <span>{{ $lang['flag'] }}</span>
+                            <span>{{ $lang['native'] }}</span>
+                            @if(app()->getLocale() === $code)<i class="fas fa-check ml-auto text-xs"></i>@endif
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Notifications --}}
+                <div class="relative">
+                    <button onclick="document.getElementById('notifMenu').classList.toggle('hidden')" class="relative text-gray-500 hover:text-indigo-600 p-2 rounded-lg hover:bg-gray-100 transition">
+                        <i class="fas fa-bell text-lg"></i>
+                        @php $unread = auth()->user()->unreadNotifications()->count(); @endphp
+                        @if($unread > 0)
+                        <span class="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">{{ $unread > 9 ? '9+' : $unread }}</span>
+                        @endif
+                    </button>
+                    <div id="notifMenu" class="hidden absolute right-0 mt-1 w-80 bg-white rounded-xl shadow-lg border border-gray-100 z-50 fade-in">
+                        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                            <span class="font-semibold text-gray-800 text-sm">{{ __('app.nav.notifications') }}</span>
+                            @if($unread > 0)
+                            <form action="{{ route('notifications.read-all') }}" method="POST">
+                                @csrf
+                                <button class="text-xs text-indigo-600 hover:underline">Mark all read</button>
+                            </form>
+                            @endif
+                        </div>
+                        <div class="max-h-72 overflow-y-auto scrollbar-thin">
+                            @forelse(auth()->user()->notifications()->latest()->take(8)->get() as $notif)
+                            @php
+                                $iconMap = [
+                                    'info'    => ['icon' => 'fa-info-circle',       'bg' => 'bg-blue-100',   'text' => 'text-blue-500'],
+                                    'success' => ['icon' => 'fa-check-circle',      'bg' => 'bg-green-100',  'text' => 'text-green-500'],
+                                    'warning' => ['icon' => 'fa-exclamation-circle','bg' => 'bg-yellow-100', 'text' => 'text-yellow-500'],
+                                    'danger'  => ['icon' => 'fa-times-circle',      'bg' => 'bg-red-100',    'text' => 'text-red-500'],
+                                ];
+                                $style = $iconMap[$notif->type] ?? $iconMap['info'];
+                            @endphp
+                            <div class="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 {{ is_null($notif->read_at) ? 'bg-indigo-50/40' : '' }}">
+                                <div class="w-8 h-8 rounded-full {{ $style['bg'] }} flex items-center justify-center flex-shrink-0">
+                                    <i class="fas {{ $style['icon'] }} {{ $style['text'] }} text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    @if($notif->link)
+                                        <a href="{{ $notif->link }}" class="text-sm text-gray-700 leading-snug hover:text-indigo-600 block">{{ $notif->message }}</a>
+                                    @else
+                                        <p class="text-sm text-gray-700 leading-snug">{{ $notif->message }}</p>
+                                    @endif
+                                    <p class="text-xs text-gray-400 mt-0.5">{{ $notif->created_at->diffForHumans() }}</p>
+                                </div>
+                            </div>
+                            @empty
+                            <div class="px-4 py-6 text-center text-sm text-gray-400">No notifications</div>
+                            @endforelse
+                        </div>
+                        <div class="border-t border-gray-100 px-4 py-2">
+                            <a href="{{ route('notifications.index') }}" class="text-xs text-indigo-600 hover:underline">View all</a>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- User menu --}}
+                <div class="relative">
+                    <button onclick="document.getElementById('userMenu').classList.toggle('hidden')" class="flex items-center gap-2 hover:bg-gray-100 rounded-lg px-2 py-1.5 transition">
+                        <img src="{{ auth()->user()->avatar_url }}" class="w-7 h-7 rounded-full object-cover" alt="">
+                        <span class="hidden sm:inline text-sm font-medium text-gray-700">{{ auth()->user()->name }}</span>
+                        <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                    </button>
+                    <div id="userMenu" class="hidden absolute right-0 mt-1 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50 fade-in">
+                        <a href="{{ route('profile.change-password.form') }}"
+                           class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">
+                            <i class="fas fa-lock w-4 text-center"></i> Reset Password
+                        </a>
+                        <div class="border-t border-gray-100 my-1"></div>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="w-full text-left flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                <i class="fas fa-sign-out-alt w-4 text-center"></i> {{ __('app.nav.logout') }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {{-- Flash messages --}}
+        <div class="shrink-0 px-4 md:px-6 pt-4">
+            @if(session('success'))
+            <div class="flex items-center gap-3 bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl mb-4 fade-in">
+                <i class="fas fa-check-circle text-green-500"></i>
+                <span class="text-sm">{{ session('success') }}</span>
+                <button onclick="this.parentElement.remove()" class="ml-auto text-green-400 hover:text-green-600"><i class="fas fa-times"></i></button>
+            </div>
+            @endif
+            @if(session('error'))
+            <div class="flex items-center gap-3 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl mb-4 fade-in">
+                <i class="fas fa-exclamation-circle text-red-500"></i>
+                <span class="text-sm">{{ session('error') }}</span>
+                <button onclick="this.parentElement.remove()" class="ml-auto text-red-400 hover:text-red-600"><i class="fas fa-times"></i></button>
+            </div>
+            @endif
+            @if($errors->any())
+            <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl mb-4 fade-in">
+                <div class="flex items-center gap-2 mb-1"><i class="fas fa-exclamation-triangle text-red-500"></i><span class="text-sm font-medium">Please fix the errors below:</span></div>
+                <ul class="list-disc list-inside text-sm space-y-0.5">
+                    @foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach
+                </ul>
+            </div>
+            @endif
+        </div>
+
+        {{-- Page content --}}
+        <main class="app-main-scroll flex-1 overflow-y-auto overflow-x-hidden px-4 md:px-6 pb-8 scrollbar-thin">
+            @yield('content')
+        </main>
+    </div>
+</div>
+
+{{-- Sidebar overlay for mobile --}}
+<div id="sidebarOverlay" class="hidden fixed inset-0 bg-black/40 z-20 md:hidden" onclick="closeSidebar()"></div>
+
+<script>
+    document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        document.getElementById('sidebarOverlay').classList.toggle('hidden');
+    });
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.add('-translate-x-full');
+        document.getElementById('sidebarOverlay').classList.add('hidden');
+    }
+    // Close dropdowns on outside click
+    document.addEventListener('click', function(e) {
+        ['langMenu','notifMenu','userMenu'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && !el.previousElementSibling?.contains(e.target) && !el.contains(e.target)) {
+                el.classList.add('hidden');
+            }
+        });
+    });
+</script>
+@stack('scripts')
+</body>
+</html>
